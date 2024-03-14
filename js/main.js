@@ -9,16 +9,23 @@ function checkPlusEven (num1,num2){
    }
    
 
-let input = document.getElementById('input73');
-let btn = document.getElementById('btn-submit37');
-let divRisposta = document.getElementById('risposta');
+// let input = document.getElementById('input73');
+// let btn = document.getElementById('btn-submit37');
+// let divRisposta = document.getElementById('risposta');
+//! verifica se una parola e' palindroma (funzione nelle utilitis)
 
 let parola = prompt('dammi una parola');
 let risultato = checkPalindrome(parola);
 console.log(risultato);
-let min = 1;
-let max = 5;
-let num = parseInt(prompt('damme un numero'));
+
+//! verifica se la somma di due numeri e' pari o dispari
+
+const min = 1;
+const max = 5;
+do{
+    let num = parseInt(prompt('damme un numero tra 1 e 5'));
+}while((num > max)||(num < min))
+
 let numPc = getRndInteger(min, max);
 let scelta = prompt('scegli pari o dispari');
 if ((scelta === 'pari' && checkPlusEven(num,numPc))||(scelta === 'dispari' && !(checkPlusEven(num,numPc)))){
