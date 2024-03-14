@@ -1,10 +1,17 @@
-// funzione che genera un numero random tra due numeri
+//! funzione che genera un numero random tra due numeri
+
 function getRndInteger(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
   } 
 
-  						 
-  function getProgressiveDivId(nomeId,i,classe,html) {
+//! funzione che genera n div con id progrssivc 
+// *@nomeId : {string} il nome che daremo al id
+// *@i : il {int} contatore del ciclo for dove lanceremo questa funzione (se la lanciate fuori da esso vi fara un solo elemento)   						 
+// *@classe : {string} le classi che andremo a dare al css
+// *@html : {string} cosa andremo a scrivere nell html
+//? ritorno : {object} ci ritorna l'elemento div 
+
+function getProgressiveDivId(nomeId,i,classe,html) {
 	let idValue=`${nomeId}${i}`;
 	let div= document.createElement('div');
 	div.setAttribute('id', idValue);
@@ -12,9 +19,38 @@ function getRndInteger(min, max) {
 	div.innerHTML = html;
 	return (div);
   } 
+//! funzione che genera n elementi uguali con classi,html e un atributo impostati (possibilita' di avere il valore atributo progressivo )  
+// *@element : {int} quanti elementi vogliamo
+// *@element : {string} quale elemento htlm vorremo stampare
+// *@atribute : {string} l'attributo che andremo a settare
+// *@atributeValue : {string} il valore del attributo
+// *@classi : {string} le classi che andremo a dare al css
+// *@html : {string} cosa andremo a scrivere nell html
+// *@check : {Booleano} se e' VERO il valore del atributo avra anche un numero progressivo se FALSO sara solo il valre atributo
+//? ritorno : {object} ci da un array con tutti i nostri elementi
 
+  function getProgrssiveElement(numberElement,element,atribute,atributeValue,classi,html,check){
+	let elementList= [];
+	let value;
+	let i = 0;
+	if(check){
+		value = `${atributeValue}-${i+1}`;
+	}
+	else{
+		value = atributeValue;
+	}
 
-function getArraysSameLenghtRandomElement (lenght,numberArray,arrayName){
+	for( i = 0; i < numberElement; i++){
+		elementList.push(document.createElement(element));
+		elementList[i].className = classi;
+		elementList[i].innerHTML = html;
+		elementList[i].setAttribute(atribute,value);
+	}
+	return elementList;
+}
+//! funzione che genera n array di n lunghezza con numeri casuali
+
+  function getArraysSameLenghtRandomElement (lenght,numberArray,arrayName){
 	let risultato =[];
 	let max = 10;
 	let min = 1;
@@ -26,3 +62,20 @@ function getArraysSameLenghtRandomElement (lenght,numberArray,arrayName){
 	}
 	return risultato;
 }  
+//! funzione che controlla se una stringa e' palindroma
+
+function checkPalindrome(word1){
+	let flag = false;
+	for(let i = 0;i<word1.length; i++){
+		for(let j = (word1.length-1); j>=0; j--){
+			if(word1[i] === word1[j]){
+				flag = true;
+			}
+			else{
+				flag = false;
+			}
+		}
+	}
+	return flag;
+}
+
