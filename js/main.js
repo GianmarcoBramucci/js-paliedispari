@@ -22,12 +22,11 @@ console.log(risultato);
 
 const min = 1;
 const max = 5;
+let numPc = getRndInteger(min, max);
+let scelta = prompt('scegli pari o dispari');
 do{
     let num = parseInt(prompt('damme un numero tra 1 e 5'));
 }while((num > max)||(num < min))
-
-let numPc = getRndInteger(min, max);
-let scelta = prompt('scegli pari o dispari');
 if ((scelta === 'pari' && checkPlusEven(num,numPc))||(scelta === 'dispari' && !(checkPlusEven(num,numPc)))){
     console.log('hai vinto');
 }
